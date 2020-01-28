@@ -1,16 +1,15 @@
 # IMPORTS
 from random import randint, sample
+from re import split
 
 poem = open("poem.txt", 'r')
+poem_lines = poem.read()
+poem_words = poem_lines.split()
 
-poem_lines = poem.readlines()
-poem_lines = [word.rstrip('\n') for word in poem_lines] 
-poem_words = []
+def histogram(source):
+    hist = {}
+    for i in source:
+        hist[i] = hist.get(i, 0) + 1
+    return hist
 
-for i in poem_lines:
-    words = i.split()
-    poem_words.append(words)
-
-print(poem_words)
-# sentence = ' '.join(poem_words)
-# print(sentence)
+print(histogram(poem_words))
