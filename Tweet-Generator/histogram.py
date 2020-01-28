@@ -1,9 +1,6 @@
 # IMPORTS
-from random import randint, sample
-from re import split
-
 poem = open("poem.txt", 'r')
-poem_lines = poem.read()
+poem_lines = poem.read().lower()
 poem_words = poem_lines.split()
 
 def histogram(source):
