@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,8 @@
 <body>
     {% block body %}
         <h1>Welcome to the site</h1>
-        Output Sentence:   {{sentence}}
+        Output Sentence:   <br><br>{{sentence}} <br>
+        <a href="{{ url_for('hello', words=random_num) }}"><button>REFRESH</button></a>
     {% endblock %}
 </body>
 </html>
