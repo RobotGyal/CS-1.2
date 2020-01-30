@@ -12,3 +12,10 @@
 
 * frequency.py
     $ python3 frequency.py word_to_find_frequency_of
+
+
+~~~~ STRETCH ~~~~
+
+* Make a "favorite" button and a /favorites route to display all the words that have been "favorited" by users. This is advanced stuff: you'll need to use a database. Not for the faint of heart.
+
+* optimize for cleaniness when reading from file
