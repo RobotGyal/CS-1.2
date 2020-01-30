@@ -7,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Main Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
 </head>
+
 <body>
     {% block body %}
         <h1>Welcome to the site</h1>
-        Output Sentence:   <br><br>{{sentence}} <br>
-        <a href="{{ url_for('hello', words=random_num) }}"><button>REFRESH</button></a>
+        Output Sentence:   <br><br>{{sentence}} <br><br>
+        <a href="{{ url_for('hello', words=random_num) }}"><type="button" class="btn btn-danger">REFRESH</button></a>
     {% endblock %}
 </body>
 </html>
