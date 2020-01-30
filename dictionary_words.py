@@ -2,7 +2,7 @@
 from random import randint, sample
 
 
-words = open("/usr/share/dict/words", 'r')
+words = open("words.txt", 'r')
 dictionary_words = words.readlines()
 
 def pick_words(dictionary_words, num):
