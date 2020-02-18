@@ -33,16 +33,13 @@ class Dictogram(dict):
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
-        random_num = random.randint(0, self.tokens)  # gets random number
-        samples = {}
-        weight = 0
-        random.randint(0, self.tokens + 1)
+        random_num = random.randint(0, self.tokens-1)  # gets random number
+        weight=0
         for key, value in self.items():
-            weight += value / self.tokens   #value? self[key]
-            # self[key] = [weight]
-            if self[key] > random_num and self[key] < self[key] + 1:
-                sample_word = key
-                return sample_word
+            weight += value
+            if weight > random_num:
+                return key
+
 
 def print_histogram(word_list):
     print()
