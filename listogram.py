@@ -48,7 +48,6 @@ class Listogram(list):
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
         if target in self:
             return self.index(target)
         else:
@@ -57,7 +56,6 @@ class Listogram(list):
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
         random_num = random.randint(0, self.tokens-1)  # gets random number
         weight=0
         for key, value in self:
