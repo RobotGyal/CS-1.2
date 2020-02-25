@@ -7,7 +7,7 @@ with open('wind_corpus.txt', 'r') as file:
     words = file.read().replace('\n', '')
 
 
-order = 3
+order = 6
 ngrams= {}
 
 
@@ -27,7 +27,7 @@ for i in range(len(words)-order):
 
 
 # SENTENCE GENERATION
-test = 300
+test = 200
 current_gram = words[0:order]  #start at beginning
 result = current_gram
 for i in range(test):
