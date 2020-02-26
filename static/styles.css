@@ -2,3 +2,7 @@ body{
     text-align: center;
     background-color: rgba(183, 255, 168, 0.596);
 }
+
+#sentence{
+    color:red
+}
