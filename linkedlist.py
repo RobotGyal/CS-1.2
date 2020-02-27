@@ -54,27 +54,27 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes.
-        TODO: Running time: O(n) Why and under what conditions?"""
-        # TODO: Loop through all nodes and count one for each
+        Running time: O(n) Why and under what conditions?"""
         count = 0
         temp = self.head  # starts at the head
         while temp:  #while true or not Nonetype
             count +=1  # increase count
-            temp =temp.next()  # move to next node
+            temp =temp.next  # move to next node
         return temp
 
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(1) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
-        # TODO: Append node after tail, if it exists
-        
-        FIXME:
-        #create node
-        #if tail is not none
-        #add to end of list (after current tail node)
-        #make new item into tail
+        Running time: O(1) Why and under what conditions?"""
+        n_node = Node(item)
+        if self.head is None:
+            self.head = n_node
+        else:
+            pos = self.head
+            while(pos.next):
+                pos = pos.next
+            pos.next = n_node
+
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -82,7 +82,7 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
 
-        FIXME:
+        #FIXME:
         #create node
         #if tail is not none
         #add to front of list (after before head node)
@@ -94,7 +94,7 @@ class LinkedList(object):
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
 
-        FIXME:
+        #FIXME:
         # loop until data matches return node
         # if data = node, return node
 
@@ -107,7 +107,7 @@ class LinkedList(object):
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
-        FIXME:
+        #FIXME:
         # loop through to find data
         # keep track of previous node
         # loop through when found
