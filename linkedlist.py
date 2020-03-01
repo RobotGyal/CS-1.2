@@ -41,7 +41,7 @@ class LinkedList(object):
         pos = self.head 
         while(pos):
             items.append(pos.data)
-            print(pos.data)
+            # print(pos.data)
             pos = pos.next
         return items
 
@@ -66,20 +66,24 @@ class LinkedList(object):
         n_node = Node(item)
         if self.head is None:  # if no head
             self.head = n_node   # make new node head
+            return 
         else:
             pos = self.head #start at beginning
             while(pos.next):    #go until hit 'next is  Null'/tail
                 pos = pos.next
             pos.next = n_node #at tail, make next node the new node
+        self.tail = n_node.data
 
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
          Running time: O(1) Why and under what conditions?"""
-        n_node = Node(item)
-        if self.head: #if head exists
-            n_node.next = self.head  # set the new nodes next position to current head
-        return n_node
+        new_node = Node(item)
+        # if self.head: #if head exists
+        #     self.head = new_node   # set the new nodes next position to current head
+        new_node.next = self.head
+        self.head = new_node
+        # return new_node
 
 
     def find(self, quality):
@@ -93,7 +97,7 @@ class LinkedList(object):
         # loop until data matches return node
         # if data = node, return node
         pos = self.head
-        while(pos.next):
+        while(pos):
             if pos.data == quality:
                 return True
             pos = pos.next
