@@ -37,16 +37,12 @@ class LinkedList(object):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
         because we always need to loop through all n nodes to get each item."""
-        items = []  # O(1) time to create empty list
-        # Start at head node
-        node = self.head  # O(1) time to assign new variable
-        # Loop until node is None, which is one node too far past tail
-        while node is not None:  # Always n iterations because no early return
-            items.append(node.data)  # O(1) time (on average) to append to list
-            # Skip to next node to advance forward in linked list
-            node = node.next  # O(1) time to reassign variable
-        # Now list contains items from all nodes
-        return items  # O(1) time to return list
+        items = []
+        node = self.head 
+        while node:
+            print(node.data)
+            node = node.next
+        return items
 
     def is_empty(self):
         """Return a boolean indicating whether this linked list is empty."""
@@ -56,11 +52,11 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         Running time: O(n) Why and under what conditions?"""
         count = 0
-        temp = self.head  # starts at the head
-        while temp:  #while true or not Nonetype
+        pos = self.head  # starts at the head
+        while pos:  #while true or not Nonetype
             count +=1  # increase count
-            temp =temp.next  # move to next node
-        return temp
+            pos =pos.next  # move to next node
+        return count
 
 
     def append(self, item):
