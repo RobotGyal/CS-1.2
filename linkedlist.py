@@ -37,11 +37,12 @@ class LinkedList(object):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
         because we always need to loop through all n nodes to get each item."""
-        items = []
-        node = self.head 
-        while node:
-            print(node.data)
-            node = node.next
+        items=[]
+        pos = self.head 
+        while(pos):
+            items.append(pos.data)
+            print(pos.data)
+            pos = pos.next
         return items
 
     def is_empty(self):
@@ -63,25 +64,22 @@ class LinkedList(object):
         """Insert the given item at the tail of this linked list.
         Running time: O(1) Why and under what conditions?"""
         n_node = Node(item)
-        if self.head is None:
-            self.head = n_node
+        if self.head is None:  # if no head
+            self.head = n_node   # make new node head
         else:
-            pos = self.head
-            while(pos.next):
+            pos = self.head #start at beginning
+            while(pos.next):    #go until hit 'next is  Null'/tail
                 pos = pos.next
-            pos.next = n_node
+            pos.next = n_node #at tail, make next node the new node
 
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
          Running time: O(1) Why and under what conditions?"""
         n_node = Node(item)
-        if self.head:
-            n_node.next = self.head
+        if self.head: #if head exists
+            n_node.next = self.head  # set the new nodes next position to current head
         return n_node
-        
-
-
 
 
     def find(self, quality):
@@ -94,6 +92,13 @@ class LinkedList(object):
         #FIXME:
         # loop until data matches return node
         # if data = node, return node
+        pos = self.head
+        while(pos.next):
+            if pos.data == quality:
+                return True
+            pos = pos.next
+        return False
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
