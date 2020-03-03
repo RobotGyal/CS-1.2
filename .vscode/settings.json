@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/usr/local/bin/python3"
+    "python.pythonPath": "/Users/aleia/dev/cs1.2/Tweet-Generator/env/bin/python3",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

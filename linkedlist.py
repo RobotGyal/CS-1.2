@@ -63,65 +63,69 @@ class LinkedList(object):
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         Running time: O(1) Why and under what conditions?"""
-        n_node = Node(item)
-        if self.head is None:  # if no head
-            self.head = n_node   # make new node head
-            return 
+        new_node = Node(item)
+        if self.is_empty():  # if no head
+            self.head = new_node   # make new node head
         else:
-            pos = self.head #start at beginning
-            while(pos.next):    #go until hit 'next is  Null'/tail
-                pos = pos.next
-            pos.next = n_node #at tail, make next node the new node
-        self.tail = n_node.data
+            self.tail.next = new_node #at tail, make next node the new node
+        self.tail = new_node
 
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
          Running time: O(1) Why and under what conditions?"""
         new_node = Node(item)
-        # if self.head: #if head exists
-        #     self.head = new_node   # set the new nodes next position to current head
-        new_node.next = self.head
+        if self.is_empty():
+            self.tail = new_node
+        else:
+            new_node.next = self.head
         self.head = new_node
-        # return new_node
+
 
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(1) Why and under what conditions?
-        TODO: Worst case running time: O(n) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find item where quality(item) is True
-        # TODO: Check if node's data satisfies given quality function
-
-        #FIXME:
-        # loop until data matches return node
-        # if data = node, return node
+        est case running time: O(1) Why and under what conditions?
+        Worst case running time: O(n) Why and under what conditions?"""
         pos = self.head
         while(pos):
-            if pos.data == quality:
+            if quality == pos.data:
+                print("Item found")
                 return True
-            pos = pos.next
+            else:
+                pos = pos.next
+        print("Item not found")
         return False
 
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(1) Why and under what conditions?
-        TODO: Worst case running time: O(n) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
-        # Hint: raise ValueError('Item not found: {}'.format(item))
-
-        #FIXME:
-        # loop through to find data
-        # keep track of previous node
-        # loop through when found
-        # delete
-        # reconnect references(previous.next = node(current/to be deleted).next)
+        Best case running time: O(1) Why and under what conditions?
+        Worst case running time: O(n) Why and under what conditions?"""
+        pos = self.head
+        prev = None
+        while pos:
+            if item == pos.data:
+                if prev is None:
+                    pos = pos.next
+                    if pos.next is None:
+                        pos = prev
+                elif pos.next is None:
+                    prev.next = None
+                    pos = prev
+                else:
+                    prev.next = pos.next
+                return None
+            else:
+                prev = pos
+                pos = pos.next
+        raise ValueError('Item not found: {}'.format(item))
+        
 
 def test_linked_list():
     ll = LinkedList()
+    print("\n")
+
     print('list: {}'.format(ll))
 
     print('\nTesting append:')
@@ -130,9 +134,13 @@ def test_linked_list():
         ll.append(item)
         print('list: {}'.format(ll))
 
+    print("\n")
+
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
+
+    print("\n")
 
     # Enable this after implementing delete method
     delete_implemented = False
