@@ -55,8 +55,8 @@ class LinkedList(object):
         count = 0
         pos = self.head  # starts at the head
         while pos:  #while true or not Nonetype
-            count +=1  # increase count
             pos =pos.next  # move to next node
+            count +=1  # increase count
         return count
 
 
@@ -66,6 +66,7 @@ class LinkedList(object):
         new_node = Node(item)
         if self.is_empty():  # if no head
             self.head = new_node   # make new node head
+            # self.tail = new_node
         else:
             self.tail.next = new_node #at tail, make next node the new node
         self.tail = new_node
@@ -75,8 +76,9 @@ class LinkedList(object):
         """Insert the given item at the head of this linked list.
          Running time: O(1) Why and under what conditions?"""
         new_node = Node(item)
-        if self.is_empty():
+        if self.head is None:
             self.tail = new_node
+            # self.head = new_node
         else:
             new_node.next = self.head
         self.head = new_node
@@ -88,14 +90,11 @@ class LinkedList(object):
         est case running time: O(1) Why and under what conditions?
         Worst case running time: O(n) Why and under what conditions?"""
         pos = self.head
-        while(pos):
-            if quality == pos.data:
-                print("Item found")
-                return True
+        while pos:
+            if quality(pos.data) is True:
+                return pos.data
             else:
                 pos = pos.next
-        print("Item not found")
-        return False
 
 
     def delete(self, item):
@@ -104,22 +103,24 @@ class LinkedList(object):
         Worst case running time: O(n) Why and under what conditions?"""
         pos = self.head
         prev = None
-        while pos:
+        while pos is not None:
             if item == pos.data:
                 if prev is None:
-                    pos = pos.next
+                    #make head next node
+                    self.head = pos.next
                     if pos.next is None:
-                        pos = prev
+                        self.tail = prev
                 elif pos.next is None:
                     prev.next = None
-                    pos = prev
+                    self.tail = prev
                 else:
                     prev.next = pos.next
-                return None
+                return
             else:
                 prev = pos
                 pos = pos.next
-        raise ValueError('Item not found: {}'.format(item))
+
+        raise ValueError(f'Item not found: {item}')
         
 
 def test_linked_list():
