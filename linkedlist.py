@@ -97,6 +97,15 @@ class LinkedList(object):
                 pos = pos.next
 
 
+    def replace(self, item, new_item):
+        pos = self.head
+        while pos:
+            if pos.data == old_item:
+                pos.data = item
+            pos = pos.next
+
+
+
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         Best case running time: O(1) Why and under what conditions?
