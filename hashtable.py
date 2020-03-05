@@ -78,12 +78,15 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        
-
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, return value associated with given key
-        # TODO: Otherwise, raise error to tell user get failed
+    #Find bucket where given key belongs
+        bucket = self.buckets[self._bucket_index(key)]
+        item = bucket.find(lambda item: item[0] == key)
+        #Check if key-value entry exists in bucket
+        if item:
+            return item[1]
+        # If found, return value associated with given key
+        # Otherwise, raise error to tell user get failed
+        raise KeyError('Key not found: {}'.format(key))
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
@@ -104,9 +107,15 @@ class HashTable(object):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
+        bucket = self.buckets[self._bucket_index(key)]
+        item = bucket.find(lambda item: item[0] == key)
         # TODO: Check if key-value entry exists in bucket
+        if item:
         # TODO: If found, delete entry associated with given key
+            bucket.delete(item)
         # TODO: Otherwise, raise error to tell user delete failed
+        else:
+            raise KeyError('Key not found: {}'.format(key))
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
 
