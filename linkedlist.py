@@ -100,8 +100,8 @@ class LinkedList(object):
     def replace(self, item, new_item):
         pos = self.head
         while pos:
-            if pos.data == old_item:
-                pos.data = item
+            if pos.data == item:
+                pos.data = new_item
             pos = pos.next
 
 

@@ -61,8 +61,10 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
         count = 0
-        for bucket in self.buckets:
-            pass
+        for i in self.buckets:
+            for j in i.items():
+                count +=1
+        return count
             
 
     def contains(self, key):
@@ -87,7 +89,7 @@ class HashTable(object):
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         Running time: O(???) Why and under what conditions?"""
-        Find bucket where given key belongs
+        #Find bucket where given key belongs
         bucket = self.buckets[self._bucket_index(key)]
         item = bucket.find(lambda item: item[0] == key)
         # Check if key-value entry exists in bucket
