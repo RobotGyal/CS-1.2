@@ -3,7 +3,7 @@ from random import randrange, choice
 # words = "Be who you are and say what you feel, because those who mind don't matter and those who matter don't mind."
 # words = "how much wood would a woodchuck chuck if a woodchuck could chuck wood."
 
-with open('wind_corpus.txt', 'r') as file:
+with open('everything.txt', 'r') as file:
     words = file.read().replace('\n', '')
 
 
@@ -29,7 +29,7 @@ def n_gram(corpus, order, ngrams=None):
 # print(n_gram(words, order))    #for function refactoring 
 # print(n_gram(words, 6))
 
-ngrams=n_gram(words, 6)
+ngrams=n_gram(words, 2)
 
 # # SENTENCE GENERATION
 def generate_sentence(corpus, order, runs, ngrams):
@@ -45,4 +45,4 @@ def generate_sentence(corpus, order, runs, ngrams):
         current_gram = result[len(result)-order:len(result)]   # next 3 of the currently picked gram
     return result
 
-print(generate_sentence(words, 6, 100, ngrams))
+print(generate_sentence(words, 2, 200, ngrams))
